@@ -1,10 +1,9 @@
 package de.ju.jict;
 
+import de.ju.jict.core.Dwmapi;
 import imgui.app.Application;
 import imgui.app.Configuration;
 
-import com.sun.jna.Library;
-import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 import com.sun.jna.platform.win32.WinDef.HWND;
 import com.sun.jna.ptr.IntByReference;
@@ -12,13 +11,6 @@ import com.sun.jna.ptr.IntByReference;
 import org.lwjgl.glfw.GLFWNativeWin32;
 
 public class App extends Application {
-    public interface Dwmapi extends Library {
-        Dwmapi INSTANCE = Native.load("dwmapi", Dwmapi.class);
-        int DWMWA_USE_IMMERSIVE_DARK_MODE = 20;
-
-        void DwmSetWindowAttribute(HWND hwnd, int dwAttribute, IntByReference pvAttribute, int cbAttribute);
-    }
-
     @Override
     protected void configure(Configuration config) {
         config.setTitle("Java ImGUI Custom Titlebar");
